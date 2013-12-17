@@ -22,7 +22,7 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "";
+            ViewBag.Message = "Welcome to a SignalR demo, a demonstration of Microsoft's SignalR push framework for web applications.";
 
             return View();
         }
