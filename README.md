@@ -8,4 +8,5 @@
 </ul>
 
 <p>The SignalR demonstration page is the home page of the application.  All of the demo functionality can be accessed from there.  You can choose to show your data edits, or just those of others.  </p>
+<p>A demo of this site in it's latest state can be found here: <a href="http://http://mvc5kendoandsignalrdemo.apphb.com/">http://mvc5kendoandsignalrdemo.apphb.com/</a></p>
 
