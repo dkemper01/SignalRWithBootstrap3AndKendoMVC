@@ -63,3 +63,8 @@ footer {
 {
     background-position: 6px -135px;
 }
+
+.popover-pad
+{
+    margin: 11px;    
+}

@@ -50,5 +50,11 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
         {
             return new JsonResult { Data = ViewModelPerson.EditPerson(editedPerson), JsonRequestBehavior = JsonRequestBehavior.DenyGet };
         }
+
+        public JsonResult FetchTooltipContent()
+        {
+            string htmlToReturn = "<p>Toggle the display of updates you choose to make, vs. those of others.</p>";
+            return new JsonResult {Data = htmlToReturn, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+        }
     }
 }

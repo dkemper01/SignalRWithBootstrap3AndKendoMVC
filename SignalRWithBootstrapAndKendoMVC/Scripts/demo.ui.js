@@ -8,7 +8,7 @@ demo.ui.Operations = (function () {
     //
     var setActiveNavItem = function () {
 
-    	var $navbarHome = $("#navbar-home")
+        var $navbarHome = $("#navbar-home");
     	var $navbarAbout = $("#navbar-about");
     	var $navbarContact = $("#navbar-contact");
 
@@ -48,4 +48,15 @@ $(document).ready(function () {
 
     kendo.data.Operations.PersonGridInit();
     demo.ui.Operations.SetActiveNavItem();
+
+    $('div#push-notify-toggle').popoverextended({
+        "placement": "right", "trigger": "hover", "title": "Hint", "html": true, "animate": true, "container": "body", "content": function (callback, extensionRef) {
+
+            $.getJSON("/Home/FetchTooltipContent", function (fetchedData) {
+                callback(extensionRef, fetchedData);
+            });
+
+        }
+    });
+
 });
