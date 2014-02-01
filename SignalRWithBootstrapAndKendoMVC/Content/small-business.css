@@ -10,7 +10,7 @@ footer {
 /* contact */
 .contact {
     padding: 2em;
-    background-color: lavender;
+    background-color: #e3e3e3;
 }
 
 .contact p {
@@ -62,6 +62,24 @@ footer {
 .console .error
 {
     background-position: 6px -135px;
+}
+
+.container .col-lg-8 > figure 
+{
+    display: inline-block;
+}
+
+.logo-nav span {
+    font-size: 2em;
+    vertical-align: middle;
+    margin-left: 10px;
+    position: relative;
+    top: 0.30em;
+}
+
+.logo-nav img {
+    max-width: 64px;
+    height: auto;
 }
 
 .popover-pad

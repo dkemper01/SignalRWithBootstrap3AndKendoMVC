@@ -29,14 +29,14 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "An app description page.";
+            ViewBag.Message = "";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "A contact page.";
+            ViewBag.Message = "Love it or ... well, hate is such a strong word.  Let me know anyway!";
 
             return View();
         }
@@ -54,6 +54,11 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
         public JsonResult FetchTooltipContent()
         {
             string htmlToReturn = "<p>Toggle the display of updates you choose to make, vs. those of others.</p>";
+
+            // Simulate long running task here ...
+            //
+            System.Threading.Thread.Sleep(1000);
+
             return new JsonResult {Data = htmlToReturn, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
         }
     }

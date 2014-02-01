@@ -50,7 +50,7 @@ $(document).ready(function () {
     demo.ui.Operations.SetActiveNavItem();
 
     $('div#push-notify-toggle').popoverextended({
-        "placement": "right", "trigger": "hover", "title": "Hint", "html": true, "animate": true, "container": "body", "content": function (callback, extensionRef) {
+        "placement": "right", "trigger": "hover", "title": "Hint", "html": true, "content": function (callback, extensionRef) {
 
             $.getJSON("/Home/FetchTooltipContent", function (fetchedData) {
                 callback(extensionRef, fetchedData);

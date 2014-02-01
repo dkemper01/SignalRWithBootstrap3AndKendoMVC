@@ -284,6 +284,11 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\bootstrap.png" />
+    <Content Include="Images\kendo.png" />
+    <Content Include="Images\mvc.png" />
+    <Content Include="Images\push.png" />
+    <Content Include="Images\science.png" />
     <Content Include="Scripts\angular.data.operations.js" />
     <Content Include="Scripts\extensions.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
