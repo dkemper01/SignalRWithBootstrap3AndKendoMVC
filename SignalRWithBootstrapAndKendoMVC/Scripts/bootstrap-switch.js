@@ -181,7 +181,7 @@
                                 else if (percent > right)
                                     percent = right;
 
-                                $element.find('>div').css('left', (percent - right) + "%")
+                                $element.find('>div').css('left', (percent - right) + "%");
                             });
 
                             $this.on('click touchend', function (e) {
@@ -305,7 +305,7 @@
                 var color = '';
                 if (value !== undefined) {
                     if ($(this).attr('data-off') !== undefined) {
-                        color = "switch-" + $(this).attr('data-off')
+                        color = "switch-" + $(this).attr('data-off');
                     }
                     $switchRight.removeClass(color);
                     color = "switch-" + value;

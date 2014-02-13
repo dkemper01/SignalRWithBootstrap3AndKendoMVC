@@ -46,17 +46,48 @@ demo.ui.Operations = (function () {
 
 $(document).ready(function () {
 
+    var tooltipTargetId = "#push-notification-help";
+
     kendo.data.Operations.PersonGridInit();
     demo.ui.Operations.SetActiveNavItem();
 
-    $('div#push-notify-toggle').popoverextended({
-        "placement": "right", "trigger": "hover", "title": "Hint", "html": true, "content": function (callback, extensionRef) {
+    configureEditsTooltip(tooltipTargetId + "|click");
 
-            $.getJSON("/Home/FetchTooltipContent", function (fetchedData) {
-                callback(extensionRef, fetchedData);
+    function configureEditsTooltip(trigger) {
+
+        var i = 0;
+        var splitResult = trigger.split("|");
+        var len = splitResult.length;
+
+        while (i < len) {
+
+            var j = i + 1;
+
+            $(splitResult[i]).popoverextended({
+                "placement": "right", "trigger": splitResult[j], "title": "Hint", "html": true, "content": function (callback, extensionRef) {
+
+                    $.getJSON("/Home/FetchTooltipContent", function (fetchedData) {
+                        callback(extensionRef, fetchedData);
+                    });
+
+                }
             });
 
+            i += 2;
         }
+    }
+
+    $("body").on("click", function (e) {
+
+        if (e.target.id != tooltipTargetId.slice(1)) {
+
+            $(tooltipTargetId).popoverextended("hide");
+        }
+    });
+
+    $('figure img').mousedown(function(e) {
+
+        $(this).fadeTo(0, 0.60);
     });
 
 });

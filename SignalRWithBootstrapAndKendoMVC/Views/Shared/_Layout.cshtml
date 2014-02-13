@@ -39,17 +39,20 @@
     <div class="container" role="main">
         <div class="row">
             <div class="col-lg-8" style="margin: 0 auto; text-align: center;">
-                    <figure><img class="img-responsive" src="../../Images/bootstrap.png" /><figcaption><a href="http://getbootstrap.com">Bootstrap</a></figcaption></figure>
-                    <figure><img class="img-responsive" src="../../Images/kendo.png" /><figcaption><a href="http://www.telerik.com/kendo-ui">Kendo</a></figcaption></figure>
-                    <figure><img class="img-responsive" src="../../Images/mvc.png" /><figcaption><a href="http://www.asp.net/mvc">MVC 5</a></figcaption></figure>
-                    <figure><img class="img-responsive" src="../../Images/push.png" /><figcaption><a href="http://signalr.net/">SignalR</a></figcaption></figure>
+                <figure><a href="http://getbootstrap.com"><img class="img-responsive" src="../../Images/bootstrap.png" /></a><figcaption><a href="http://getbootstrap.com">Bootstrap</a></figcaption></figure>
+                <figure><a href="http://www.telerik.com/kendo-ui"><img class="img-responsive" src="../../Images/kendo.png" /></a><figcaption><a href="http://www.telerik.com/kendo-ui">Kendo</a></figcaption></figure>
+                <figure><a href="http://www.asp.net/mvc"><img class="img-responsive" src="../../Images/mvc.png" /></a><figcaption><a href="http://www.asp.net/mvc">MVC 5</a></figcaption></figure>
+                <figure><a href="http://signalr.net/"><img class="img-responsive" src="../../Images/push.png" /></a><figcaption><a href="http://signalr.net/">SignalR</a></figcaption></figure>
             </div>
             <div class="col-lg-4">
-                <h1>Push Notification Options</h1>
-                <p>Include my edits</p>
-                @*<a class="btn btn-primary btn-lg" href="#">Call to Action!</a>*@
-                <div class="make-switch switch-large" id="push-notify-toggle" data-on-label="Yes" data-off-label="No">
-                    <input id="show-current-user-updates-switch" type="checkbox" checked>
+                <div id="push-notification-options">
+                    <h1 class="no-inline">Push Notification Options</h1>
+                    <div class="no-inline nudge-right">Include my edits</div>
+                    @*<a class="btn btn-primary btn-lg" href="#">Call to Action!</a>*@
+                    <div class="make-switch switch-large inline-me" id="push-notify-toggle" data-on-label="Yes" data-off-label="No">
+                        <input id="show-current-user-updates-switch" type="checkbox" checked>
+                    </div>
+                    <div id="push-notification-help" class="btn btn-default btn-circle inline-me">?</div>
                 </div>
             </div>
         </div>

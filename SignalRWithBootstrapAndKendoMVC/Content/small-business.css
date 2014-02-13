@@ -64,9 +64,37 @@ footer {
     background-position: 6px -135px;
 }
 
+/* site style compliments */
+
+figure a:active 
+{
+    opacity: 0.70;
+    -moz-opacity: 0.70;
+    -webkit-opacity: 0.70;
+}
+
+.btn-circle 
+{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  margin-left: 0.50em;
+  padding: 1px 0;
+  font-size: 1.50em;
+  line-height: 1.42;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
 .container .col-lg-8 > figure 
 {
     display: inline-block;
+}
+
+.nudge-right 
+{
+    margin-left: 3px;    
 }
 
 .logo-nav span {
@@ -86,3 +114,18 @@ footer {
 {
     margin: 11px;    
 }
+
+#push-notification-options 
+{
+    margin: 0 auto;
+    display: table;
+}
+    #push-notification-options > .inline-me
+    {
+        display: inline-block;
+    }
+
+    #push-notification-options > .no-inline
+    {
+        display: block;
+    }
