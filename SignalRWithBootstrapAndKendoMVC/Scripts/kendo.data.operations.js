@@ -51,14 +51,14 @@ kendo.data.Operations = (function () {
     var dataSource = new kendo.data.DataSource({
         transport: {
             read: {
-                url: crudServiceBaseUrl + "/FetchPersonData",
+                url: crudServiceBaseUrl + "/FetchPersonData?nocache=" + (new Date()).getTime(),
                 contentType: "application/json; charset=utf-8", // tells the web service to serialize JSON
                 type: "GET", //use HTTP POST request as the default GET is not allowed for ASMX
                 dataType: "json",
                 headers: { "cache-control": "no-cache" }
             },
             update: {
-                url: crudServiceBaseUrl + "/EditPersonData",
+                url: crudServiceBaseUrl + "/EditPersonData?nocache=" + (new Date()).getTime(),
                 contentType: "application/json; charset=utf-8", // tells the web service to serialize JSON
                 type: "POST", //use HTTP POST request as the default GET is not allowed for ASMX
                 dataType: "json",
@@ -68,6 +68,8 @@ kendo.data.Operations = (function () {
                 if (operation !== "read" && options) {
                     return kendo.stringify({ editedPerson: options });
                 }
+
+                return null;
             }
         },
         pageSize: 20,
