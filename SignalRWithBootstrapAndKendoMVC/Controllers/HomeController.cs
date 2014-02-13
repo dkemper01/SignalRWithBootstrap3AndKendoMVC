@@ -43,11 +43,19 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
 
         public JsonResult FetchPersonData()
         {
+            // Setting no-cache resolved the issue with safari.
+            //
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
             return new JsonResult { Data = ViewModelPerson.PersonDataCollection, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         public JsonResult EditPersonData(KendoDataModel editedPerson)
         {
+            // Setting no-cache resolved the issue with safari.
+            //
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
             return new JsonResult { Data = ViewModelPerson.EditPerson(editedPerson), JsonRequestBehavior = JsonRequestBehavior.DenyGet };
         }
 
