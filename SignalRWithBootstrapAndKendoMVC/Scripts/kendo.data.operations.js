@@ -54,13 +54,15 @@ kendo.data.Operations = (function () {
                 url: crudServiceBaseUrl + "/FetchPersonData",
                 contentType: "application/json; charset=utf-8", // tells the web service to serialize JSON
                 type: "GET", //use HTTP POST request as the default GET is not allowed for ASMX
-                dataType: "json"
+                dataType: "json",
+                headers: { "cache-control": "no-cache" }
             },
             update: {
                 url: crudServiceBaseUrl + "/EditPersonData",
                 contentType: "application/json; charset=utf-8", // tells the web service to serialize JSON
                 type: "POST", //use HTTP POST request as the default GET is not allowed for ASMX
-                dataType: "json"
+                dataType: "json",
+                headers: { "cache-control": "no-cache" }
             },
             parameterMap: function (options, operation) {
                 if (operation !== "read" && options) {
