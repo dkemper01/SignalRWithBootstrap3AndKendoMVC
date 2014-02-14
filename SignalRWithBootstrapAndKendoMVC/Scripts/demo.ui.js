@@ -47,11 +47,15 @@ demo.ui.Operations = (function () {
 $(document).ready(function () {
 
     var tooltipTargetId = "#push-notification-help";
+    var bodyElement = document.getElementsByTagName("body");
+    var hammertime = Hammer(bodyElement[0]);
+    var handledByTap = false;
+    var handledByClick = false;
 
     kendo.data.Operations.PersonGridInit();
     demo.ui.Operations.SetActiveNavItem();
-
     configureEditsTooltip(tooltipTargetId + "|click");
+    kendo.data.Operations.RefreshGrid();
 
     function configureEditsTooltip(trigger) {
 
@@ -79,11 +83,36 @@ $(document).ready(function () {
 
     $("body").on("click", function (e) {
 
+        if (handledByTap) {
+
+            handledByTap = false;
+            return;
+        }
+
+        handledByClick = true;
+
         if (e.target.id != tooltipTargetId.slice(1)) {
 
             $(tooltipTargetId).popoverextended("hide");
         }
     });
+
+    hammertime.on("tap", function (e) {
+
+        if (handledByClick) {
+
+            handledByClick = false;
+            return;
+        }
+
+        handledByTap = true;
+
+        if (e.target.id != tooltipTargetId.slice(1)) {
+
+            $(tooltipTargetId).popoverextended("hide");
+        }
+    });
+
 
     $('figure img').mousedown(function(e) {
 

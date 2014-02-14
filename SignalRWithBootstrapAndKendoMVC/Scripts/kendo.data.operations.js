@@ -51,18 +51,16 @@ kendo.data.Operations = (function () {
     var dataSource = new kendo.data.DataSource({
         transport: {
             read: {
-                url: crudServiceBaseUrl + "/FetchPersonData?nocache=" + (new Date()).getTime(),
+                url: crudServiceBaseUrl + "/FetchPersonData",
                 contentType: "application/json; charset=utf-8", // tells the web service to serialize JSON
                 type: "GET", //use HTTP POST request as the default GET is not allowed for ASMX
-                dataType: "json",
-                headers: { "cache-control": "no-cache" }
+                dataType: "json"
             },
             update: {
-                url: crudServiceBaseUrl + "/EditPersonData?nocache=" + (new Date()).getTime(),
+                url: crudServiceBaseUrl + "/EditPersonData",
                 contentType: "application/json; charset=utf-8", // tells the web service to serialize JSON
                 type: "POST", //use HTTP POST request as the default GET is not allowed for ASMX
-                dataType: "json",
-                headers: { "cache-control": "no-cache" }
+                dataType: "json"
             },
             parameterMap: function (options, operation) {
                 if (operation !== "read" && options) {
@@ -76,11 +74,9 @@ kendo.data.Operations = (function () {
         schema: {
             /* data: "d", // ASMX services return JSON in the following format { "d": <result> }. Specify how to get the result. */
             total: function (result) {
-                result = result.d || result;
 
-                if (result != null) {
-                    return result.length;
-                }
+                result = result.d || result;
+                return result.length;
             },
             model: {
                 id: "Id",
@@ -124,10 +120,30 @@ kendo.data.Operations = (function () {
         }
     };
 
+    /*  
+    * @method refreshPersonGrid
+    * Handles the Safari rendering issue: http://www.telerik.com/forums/web-ui-grid-display-problem-in-ipad-safari-(ios-7-)
+    * @return This method does not return an object or value.
+    */
+    var refreshPersonGrid = function() {
+
+        $("#person-grid").data("kendoGrid").one("dataBound", function (e) {
+
+            var that = this;
+            that.tbody[0].style.zoom = 1.1;
+
+            setTimeout(function () {
+                that.tbody[0].style.zoom = 1;
+            });
+        });
+
+    };
+
     // accessible to consumer ...
     //
     return {
         PersonGridInit: initPersonGrid,
-        PeopleDataSource: dataSource
+        PeopleDataSource: dataSource,
+        RefreshGrid: refreshPersonGrid
     };
 })();
