@@ -61,5 +61,21 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
 
             return new JsonResult {Data = htmlToReturn, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
         }
+
+        public JsonResult FetchDemoTooltipContent(string entry)
+        {
+            string htmlToReturn = "<p>You didn't enter anything in this field yet.</p>";
+
+            // Simulate long running task here ...
+            //
+            System.Threading.Thread.Sleep(500);
+
+            if (!String.IsNullOrEmpty(entry))
+            {
+                htmlToReturn = String.Format("<p>On {0} at {1}, you entered: </p> <p></p> <p>{2}</p>", System.DateTime.Now.Date.ToShortDateString(), System.DateTime.Now.ToShortTimeString(), HttpUtility.HtmlAttributeEncode(entry));
+            }
+
+            return new JsonResult {Data = htmlToReturn, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+        }
     }
 }
