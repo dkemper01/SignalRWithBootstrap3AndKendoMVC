@@ -1,10 +1,10 @@
 body {
-	margin-top: 125px; /* adjust this if the height of the menu bar changes */
+    margin-top: 125px; /* adjust this if the height of the menu bar changes */
 }
 
 
 footer {
-	padding: 30px 0;	
+    padding: 30px 0;
 }
 
 /* contact */
@@ -13,23 +13,22 @@ footer {
     background-color: #e3e3e3;
 }
 
-.contact p {
-    margin: 5px 0 0 10px;
-}
+    .contact p {
+        margin: 5px 0 0 10px;
+    }
 
-.contact iframe {
-    border: 1px solid #333;
-    margin: 5px 0 0 10px;
-}
+    .contact iframe {
+        border: 1px solid #333;
+        margin: 5px 0 0 10px;
+    }
 
 
 /*console*/
 
-.console
-{
+.console {
     background-color: #fff;
-    border:solid #ccc;
-    border-width:1px 0;
+    border: solid #ccc;
+    border-width: 1px 0;
     color: #333;
     font: 11px Consolas, Monaco, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
     height: 120px;
@@ -39,62 +38,55 @@ footer {
     text-align: left;
 }
 
-.console .count,
-.km-root .km-android .console .count
-{
-    background-color: #91AFEF;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    border-radius: 15px;
-    color: #FFFFFF;
-    font-size: 10px;
-    margin-left: 5px;
-    padding: 2px 6px 2px 5px;
-}
+    .console .count,
+    .km-root .km-android .console .count {
+        background-color: #91AFEF;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        border-radius: 15px;
+        color: #FFFFFF;
+        font-size: 10px;
+        margin-left: 5px;
+        padding: 2px 6px 2px 5px;
+    }
 
-.console div
-{
-    background-position: 6px -95px;
-    border-bottom: 1px solid #DDD;
-    padding: 5px 5px 4px 24px;
-}
+    .console div {
+        background-position: 6px -95px;
+        border-bottom: 1px solid #DDD;
+        padding: 5px 5px 4px 24px;
+    }
 
-.console .error
-{
-    background-position: 6px -135px;
-}
+    .console .error {
+        background-position: 6px -135px;
+    }
 
 /* site style compliments */
 
-figure a:active 
-{
+figure a:active {
     opacity: 0.70;
     -moz-opacity: 0.70;
     -webkit-opacity: 0.70;
 }
 
-.btn-circle 
-{
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  margin-left: 0.50em;
-  padding: 1px 0;
-  font-size: 1.50em;
-  line-height: 1.42;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-left: 0.50em;
+    padding: 1px 0;
+    font-size: 1.50em;
+    line-height: 1.42;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
 }
 
-.container .col-lg-8 > figure 
-{
+.container .col-lg-8 > figure {
     display: inline-block;
 }
 
-.nudge-right 
-{
-    margin-left: 3px;    
+.nudge-right {
+    margin-left: 3px;
 }
 
 .logo-nav span {
@@ -110,22 +102,19 @@ figure a:active
     height: auto;
 }
 
-.popover-pad
-{
-    margin: 11px;    
+.popover-pad {
+    margin: 11px;
 }
 
-#push-notification-options 
-{
+#push-notification-options {
     margin: 0 auto;
     display: table;
 }
-    #push-notification-options > .inline-me
-    {
+
+    #push-notification-options > .inline-me {
         display: inline-block;
     }
 
-    #push-notification-options > .no-inline
-    {
+    #push-notification-options > .no-inline {
         display: block;
     }
