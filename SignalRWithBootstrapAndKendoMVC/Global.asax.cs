@@ -24,5 +24,13 @@ namespace SignalRWithBootstrapAndKendoMVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
         }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            // In a production application, this would open up and/or increase the potential for XSS and CSRF attacks, spoofing and others.  
+            // Since this is a demo site, the endpoints a few, and the output is encoded, I can live with it here for a while.
+            //
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");  
+        }
     }
 }
