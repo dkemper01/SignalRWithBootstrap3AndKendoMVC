@@ -20,6 +20,7 @@ kendo.data.Operations = (function () {
         if (showCurrentUserEditSwitchValue) {
 
             kendoConsole.log(editMessage);
+
         } else if ($.connection.hub.id != cId) {
 
             kendoConsole.log(editMessage);
@@ -33,9 +34,11 @@ kendo.data.Operations = (function () {
         //
         var currentRow = arg.model;
         var currentEdit = arg.sender.select().attr("data-uid");
+        var numeric = arg.container.find("input[name=Id]").data("kendoNumericTextBox");
+
+        numeric.enable(false);
 
         editNotificationHub.server.sendEditMessage({ "Id": currentRow.Id, "FirstName": currentRow.FirstName, "LastName": currentRow.LastName, "Email": currentRow.Email });
-
     }
 
     function onPersonSave(arg) {
@@ -81,20 +84,32 @@ kendo.data.Operations = (function () {
             model: {
                 id: "Id",
                 fields: {
-                    Id: { type: "number", editable: false, nullable: false, validation: { required: true } },
+                    Id: { type: "number", nullable: false },
                     FirstName: { type: "string", validation: { required: true } },
                     LastName: { type: "string", validation: { required: true } },
                     PostalCode: { type: "string" },
-                    Email: { type: "string", validation: { required: true } }
+                    Email: { type: "email", validation: { required: true } }
                 }
             }
         }
     });
 
+    var numericEditor = function (container, options) {
+
+        $('<input name="Id" data-bind="value:' + options.field + '"/>')
+            .appendTo(container)
+            .kendoNumericTextBox({
+                decimals: 0,
+                min: 0,
+                format: '#'
+            });
+    };
+
     var initPersonGrid = function () {
 
         $personGrid = $("#person-grid");
-        var staticWidth = "135px";
+        var staticSm = "75px";
+        var staticMed = "135px";
         var adaptiveFlag = $(document).width() <= 970 ? "phone" : false; // currently not in use due to nesting issues ...
 
         if ($personGrid.length > 0) {
@@ -114,13 +129,13 @@ kendo.data.Operations = (function () {
                 selectable: "row",
                 height: 430,
                 columns: [
-                    "Id",
-                    { field: "FirstName", title: "First Name", width: staticWidth },
-                    { field: "LastName", title: "Last Name", width: staticWidth },
-                    { field: "PostalCode", title: "Zip", width: "75px" },
-                    { field: "Email", title: "Email", width: staticWidth },
-                    { command: ["edit"], title: "Actions", width: "210px" }],
-                editable: "inline"
+                    { field: "Id", editor: numericEditor, title: "Id", width: staticSm },
+                    { field: "FirstName", title: "First Name", width: staticMed },
+                    { field: "LastName", title: "Last Name", width: staticMed },
+                    { field: "PostalCode", title: "Zip", width: staticSm },
+                    { field: "Email", title: "Email", width: "200px" },
+                    { command: ["edit"], title: "Actions", width: "100px" }],
+                editable: "popup"
             });
         }
     };
