@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SignalR | Bootstrap | Kendo UI</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    <link href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="http://cdn.kendostatic.com/2014.3.1119/styles/kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2014.3.1119/styles/kendo.bootstrap.min.css" rel="stylesheet" />
     @*@Styles.Render("~/Content/css")*@
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/small-business.css")
@@ -23,13 +23,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo-nav" href="#"><img src="../../Images/Science.png"><span>Demo</span></a>
+                <a class="pull-left logo-nav" href="#"><img class="img-responsive" src="../../Images/mvc5-kendo-signalr-demo.png"></a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="navbar-home" class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li id="navbar-home">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li id="navbar-about">@Html.ActionLink("About", "About", "Home")</li>
-                    <li id="navbar-contact">@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -38,19 +37,22 @@
     </div>
     <div class="container" role="main">
         <div class="row">
-            <div class="col-lg-8" style="margin: 0 auto; text-align: center;">
-                <figure><a href="http://getbootstrap.com"><img class="img-responsive" src="../../Images/bootstrap.png" /></a><figcaption><a href="http://getbootstrap.com">Bootstrap</a></figcaption></figure>
-                <figure><a href="http://www.telerik.com/kendo-ui"><img class="img-responsive" src="../../Images/kendo.png" /></a><figcaption><a href="http://www.telerik.com/kendo-ui">Kendo</a></figcaption></figure>
-                <figure><a href="http://www.asp.net/mvc"><img class="img-responsive" src="../../Images/mvc.png" /></a><figcaption><a href="http://www.asp.net/mvc">MVC 5</a></figcaption></figure>
-                <figure><a href="http://signalr.net/"><img class="img-responsive" src="../../Images/push.png" /></a><figcaption><a href="http://signalr.net/">SignalR</a></figcaption></figure>
+            <div class="col-lg-8 col-md-8" style="margin: 0 auto; text-align: center;">
+                <div>
+                    <figure><a href="http://getbootstrap.com"><img class="img-responsive" src="../../Images/bootstrap.png" /></a><figcaption><a href="http://getbootstrap.com">Bootstrap</a></figcaption></figure>
+                    <figure><a href="http://www.telerik.com/kendo-ui"><img class="img-responsive" src="../../Images/kendo.png" /></a><figcaption><a href="http://www.telerik.com/kendo-ui">Kendo</a></figcaption></figure>
+                </div>
+                <div>
+                    <figure><a href="http://www.asp.net/mvc"><img class="img-responsive" src="../../Images/mvc.png" /></a><figcaption><a href="http://www.asp.net/mvc">MVC 5</a></figcaption></figure>
+                    <figure><a href="http://signalr.net/"><img class="img-responsive" src="../../Images/push.png" /></a><figcaption><a href="http://signalr.net/">SignalR</a></figcaption></figure>
+                </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-4">
                 <div id="push-notification-options">
                     <h1 class="no-inline">Push Notification Options</h1>
                     <div class="no-inline nudge-right">Include my edits</div>
-                    @*<a class="btn btn-primary btn-lg" href="#">Call to Action!</a>*@
-                    <div class="make-switch switch-large inline-me" id="push-notify-toggle" data-on-label="Yes" data-off-label="No">
-                        <input id="show-current-user-updates-switch" type="checkbox" checked>
+                    <div class="inline-me">
+                        <input type="checkbox" name="show-current-user-updates-switch" checked>
                     </div>
                     <div id="push-notification-help" class="btn btn-default btn-circle inline-me">?</div>
                 </div>
@@ -65,7 +67,7 @@
             <hr>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Daniel Kemper 2013</p>
+                    <p>Copyright &copy; Daniel Kemper 2015</p>
                 </div>
             </div>
         </footer>
@@ -77,7 +79,7 @@
     @Scripts.Render("~/bundles/signalR")
     <script src="/signalr/hubs"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
-    <script src="http://cdn.kendostatic.com/2013.3.1119/js/kendo.all.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.3.1119/js/kendo.all.min.js"></script>
     <script src="/Scripts/kendo.data.operations.js"></script>
     <script src="/Scripts/console.js"></script>
     <script src="/Scripts/demo.ui.js"></script>

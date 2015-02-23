@@ -34,13 +34,6 @@ namespace SignalRWithBootstrapAndKendoMVC.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Love it or ... well, hate is such a strong word.  Let me know anyway!";
-
-            return View();
-        }
-
         public JsonResult FetchPersonData()
         {
             return new JsonResult { Data = ViewModelPerson.PersonDataCollection, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

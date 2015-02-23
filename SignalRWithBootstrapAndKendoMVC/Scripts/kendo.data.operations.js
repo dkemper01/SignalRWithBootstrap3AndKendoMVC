@@ -15,7 +15,7 @@ kendo.data.Operations = (function () {
 
     function onEditNotification(cId, editMessage) {
 
-        var showCurrentUserEditSwitchValue = $('#show-current-user-updates-switch').prop('checked');
+        var showCurrentUserEditSwitchValue = $('[name="show-current-user-updates-switch"]').prop('checked');
 
         if (showCurrentUserEditSwitchValue) {
 
@@ -94,6 +94,8 @@ kendo.data.Operations = (function () {
     var initPersonGrid = function () {
 
         $personGrid = $("#person-grid");
+        var staticWidth = "135px";
+        var adaptiveFlag = $(document).width() <= 970 ? "phone" : false; // currently not in use due to nesting issues ...
 
         if ($personGrid.length > 0) {
 
@@ -110,11 +112,11 @@ kendo.data.Operations = (function () {
                 height: 430,
                 columns: [
                     "Id",
-                    { field: "FirstName", title: "First Name" },
-                    { field: "LastName", title: "Last Name" },
-                    { field: "PostalCode", title: "Zip" },
-                    { field: "Email", title: "Email" },
-                    { command: ["edit"], title: "Actions", width: "200px" }],
+                    { field: "FirstName", title: "First Name", width: staticWidth },
+                    { field: "LastName", title: "Last Name", width: staticWidth },
+                    { field: "PostalCode", title: "Zip", width: "75px" },
+                    { field: "Email", title: "Email", width: staticWidth },
+                    { command: ["edit"], title: "Actions", width: "210px" }],
                 editable: "inline"
             });
         }

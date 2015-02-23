@@ -19,7 +19,8 @@ namespace SignalRWithBootstrapAndKendoMVC
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap*"));
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap-switch.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
             "~/Scripts/jquery.signalR-{version}.js"));
@@ -33,7 +34,8 @@ namespace SignalRWithBootstrapAndKendoMVC
                 "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
-                "~/Content/bootstrap/bootstrap*"
+                "~/Content/bootstrap*",
+                "~/Content/bootstrap/bootstrap-switch.css"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

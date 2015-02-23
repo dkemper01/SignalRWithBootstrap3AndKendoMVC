@@ -10,14 +10,11 @@ demo.ui.Operations = (function () {
 
         var $navbarHome = $("#navbar-home");
     	var $navbarAbout = $("#navbar-about");
-    	var $navbarContact = $("#navbar-contact");
 
-    	var navItems = [$navbarHome, $navbarAbout, $navbarContact];
+    	var navItems = [$navbarHome, $navbarAbout ];
 
-    	if (window.location.pathname.match(/Home\/About/)) {
+    	if (window.location.pathname.match(/Home\/About\/?/)) {
     		setActiveClass(navItems, $navbarAbout);
-    	} else if (window.location.pathname.match(/Home\/Contact/)) {
-    		setActiveClass(navItems, $navbarContact);
     	} else {
     		setActiveClass(navItems, $navbarHome);
     	}
@@ -47,15 +44,27 @@ demo.ui.Operations = (function () {
 $(document).ready(function () {
 
     var tooltipTargetId = "#push-notification-help";
+    var notifyOptionsPanel = "#push-notification-options";
     var bodyElement = document.getElementsByTagName("body");
     var hammertime = Hammer(bodyElement[0]);
     var handledByTap = false;
     var handledByClick = false;
 
-    kendo.data.Operations.PersonGridInit();
     demo.ui.Operations.SetActiveNavItem();
-    configureEditsTooltip(tooltipTargetId + "|click");
-    kendo.data.Operations.RefreshGrid();
+
+    if (window.location.href.match(/\/Home\/About\/?$/)) {
+
+        $(notifyOptionsPanel).html('<h1 class="no-inline">Oh, yeah.  About this demo ...</h1>');
+
+    } else {
+
+        kendo.data.Operations.PersonGridInit();
+        configureEditsTooltip(tooltipTargetId + "|click");
+        kendo.data.Operations.RefreshGrid();
+
+    }
+
+    $('[name="show-current-user-updates-switch"]').bootstrapSwitch();
 
     function configureEditsTooltip(trigger) {
 
