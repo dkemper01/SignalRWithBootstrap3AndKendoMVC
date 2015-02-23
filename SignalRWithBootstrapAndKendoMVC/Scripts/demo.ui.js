@@ -4,12 +4,18 @@ demo.ui = demo.ui || {}; // demo.ui namespace
 demo.ui.Operations = (function () {
     "use strict";
 
+    var handledByTap = false;
+    var handledByClick = false;
+    var tooltipTargetId = "#push-notification-help";
+    var bodyElement = document.getElementsByTagName("body");
+    var hammertime = Hammer(bodyElement[0]);
+
     // method of this singleton class
     //
     var setActiveNavItem = function () {
 
         var $navbarHome = $("#navbar-home");
-    	var $navbarAbout = $("#navbar-about");
+        var $navbarAbout = $("#navbar-about");
 
     	var navItems = [$navbarHome, $navbarAbout ];
 
@@ -34,21 +40,56 @@ demo.ui.Operations = (function () {
     	}
     };
 
+    var clickHandler = function (e) {
+
+        $("body").off("click", demo.ui.Operations.BodyClickHandler);
+
+        if (handledByTap) {
+
+            handledByTap = false;
+            return;
+        }
+
+        if (e.target.id != tooltipTargetId.slice(1)) {
+
+            $(tooltipTargetId).popoverextended("hide");
+            handledByClick = true;
+        }
+
+    };
+
+    var tapHandler = function (e) {
+
+        hammertime.off("tap", demo.ui.Operations.TapHandler);
+
+        if (handledByClick) {
+
+            handledByClick = false;
+            return;
+        }
+
+        if (e.target.id != tooltipTargetId.slice(1)) {
+
+            $(tooltipTargetId).popoverextended("hide");
+            handledByTap = true;
+        }
+
+    };
+
     // accessible to consumer ...
     //
     return {
-        SetActiveNavItem: setActiveNavItem
+        SetActiveNavItem: setActiveNavItem,
+        BodyClickHandler: clickHandler,
+        HammerTime: hammertime,
+        TapHandler: tapHandler,
+        TooltipTargetId: tooltipTargetId
     };
 })();
 
 $(document).ready(function () {
 
-    var tooltipTargetId = "#push-notification-help";
     var notifyOptionsPanel = "#push-notification-options";
-    var bodyElement = document.getElementsByTagName("body");
-    var hammertime = Hammer(bodyElement[0]);
-    var handledByTap = false;
-    var handledByClick = false;
 
     demo.ui.Operations.SetActiveNavItem();
 
@@ -59,7 +100,7 @@ $(document).ready(function () {
     } else {
 
         kendo.data.Operations.PersonGridInit();
-        configureEditsTooltip(tooltipTargetId + "|click");
+        configureEditsTooltip(demo.ui.Operations.TooltipTargetId + "|click");
         kendo.data.Operations.RefreshGrid();
 
     }
@@ -79,6 +120,9 @@ $(document).ready(function () {
             $(splitResult[i]).popoverextended({
                 "placement": "right", "trigger": splitResult[j], "title": "Hint", "html": true, "content": function (callback, extensionRef) {
 
+                    $("body").on("click", demo.ui.Operations.BodyClickHandler);
+                    demo.ui.Operations.HammerTime.on("tap", demo.ui.Operations.TapHandler);
+
                     $.getJSON("/Home/FetchTooltipContent", function (fetchedData) {
                         callback(extensionRef, fetchedData);
                     });
@@ -89,39 +133,6 @@ $(document).ready(function () {
             i += 2;
         }
     }
-
-    $("body").on("click", function (e) {
-
-        if (handledByTap) {
-
-            handledByTap = false;
-            return;
-        }
-
-        handledByClick = true;
-
-        if (e.target.id != tooltipTargetId.slice(1)) {
-
-            $(tooltipTargetId).popoverextended("hide");
-        }
-    });
-
-    hammertime.on("tap", function (e) {
-
-        if (handledByClick) {
-
-            handledByClick = false;
-            return;
-        }
-
-        handledByTap = true;
-
-        if (e.target.id != tooltipTargetId.slice(1)) {
-
-            $(tooltipTargetId).popoverextended("hide");
-        }
-    });
-
 
     $('figure img').mousedown(function(e) {
 
