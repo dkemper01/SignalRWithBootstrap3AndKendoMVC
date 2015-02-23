@@ -126,7 +126,7 @@ figure a:active {
 
 .logo-nav img {
     height: auto;
-    margin-top: 1px;
+    margin: 1px 0 0 2px;
 }
 
 .popover-pad {

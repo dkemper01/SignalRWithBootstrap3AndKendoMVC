@@ -104,6 +104,9 @@ kendo.data.Operations = (function () {
                 save: onPersonSave,
                 dataSource: kendo.data.Operations.PeopleDataSource,
                 pageable: true,
+                scrollable: {
+                    virtual: true
+                },
                 sortable: {
                     mode: "single",
                     allowUnsort: false
