@@ -37,7 +37,6 @@ kendo.data.Operations = (function () {
         var numeric = arg.container.find("input[name=Id]").data("kendoNumericTextBox");
         var editWindow = this.editable.element.data("kendoWindow");
 
-        $(".k-edit-form-container").parent().data("kendoWindow").center();
         numeric.enable(false);
 
         editNotificationHub.server.sendEditMessage({ "Id": currentRow.Id, "FirstName": currentRow.FirstName, "LastName": currentRow.LastName, "Email": currentRow.Email });
