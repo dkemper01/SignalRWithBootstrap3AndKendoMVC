@@ -1,5 +1,5 @@
 body {
-    margin-top: 125px; /* adjust this if the height of the menu bar changes */
+    margin-top: 70px; /* adjust this if the height of the menu bar changes */
 }
 
 
@@ -37,6 +37,27 @@ h1 {
     background-image: none;
     background-position: 50% 50%;
     background-color: #9ABCDA;
+}
+
+.k-widget.k-window {
+    width: 80%;
+}
+
+.k-edit-form-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.k-edit-field > span, .k-edit-field > input {
+    width: 70%;
+}
+
+.k-edit-label, .k-edit-form-container .editor-label { 
+    width: 25%;
+}
+
+.k-edit-field, .k-edit-form-container .editor-field {
+    width: 68%;
 }
 
 /* console */
