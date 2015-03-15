@@ -154,6 +154,10 @@ figure a:active {
     padding-right: 5px;
 }
 
+.pad-sides-ten {
+    padding: 0 10px 0 10px;
+}
+
 .popover-pad {
     margin: 11px;
 }
