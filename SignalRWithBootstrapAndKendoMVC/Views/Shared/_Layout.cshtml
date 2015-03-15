@@ -1,8 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@using SignalRWithBootstrapAndKendoMVC.Device
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+
+    @{
+        var ua = Request.UserAgent ?? String.Empty;
+        var profiler = new DefaultDeviceProfiler();
+
+        if (profiler.IsSmartphone(ua))
+        {
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        }
+        else
+        {
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        }
+    }
+
+    <meta name="description" content="A SignalR example using MVC 5 with EntityObjects, Bootstrap 3.3.2 and Kendo UI." />
+    <meta name="author" content="Daniel Kemper" />
     <title>@ViewBag.Title - SignalR | Bootstrap | Kendo UI</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -17,7 +34,7 @@
     <div id="nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header" role="banner">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -36,7 +53,13 @@
         <!-- /.container -->
     </div>
     <div class="container" role="main">
-        <div class="row">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-6 col-sm-3 sidebar sidebar-offcanvas">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="navbar-home"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home pad-right-5"></span>Home</a></li>
+                    <li id="navbar-about"><a href="@Url.Action("About", "Home")"><span class="glyphicon glyphicon-certificate pad-right-5"></span>About</a></li>
+                </ul>
+            </div>
             <div class="col-lg-8 col-md-8" style="margin: 0 auto; text-align: center;">
                 <div>
                     <figure><a href="http://getbootstrap.com"><img class="img-responsive" src="../../Images/bootstrap.png" /></a><figcaption><a href="http://getbootstrap.com">Bootstrap</a></figcaption></figure>
@@ -58,20 +81,24 @@
                 </div>
             </div>
         </div>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col">
+                <hr>
 
-        <hr>
+                @RenderBody()
 
-        @RenderBody()
+                <div class="col-xs-6 col-sm-3 sidebar sidebar-offcanvas"></div>
 
-        <footer>
-            <hr>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Daniel Kemper 2015</p>
-                </div>
+                <footer>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>Copyright &copy; Daniel Kemper 2015</p>
+                        </div>
+                    </div>
+                </footer>
             </div>
-        </footer>
-
+        </div>
     </div>
     <!-- /.container -->
     @Scripts.Render("~/bundles/jquery")

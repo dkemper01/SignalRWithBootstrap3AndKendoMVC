@@ -139,4 +139,13 @@ $(document).ready(function () {
         $(this).fadeTo(0, 0.60);
     });
 
+    $('[data-toggle="offcanvas"]').click(function () {
+
+        var padHeight = $(document).scrollTop() + 'px';
+
+        $('.sidebar > ul').css({ "padding-top": padHeight });
+        $('.row-offcanvas').toggleClass('active');
+
+    });
+
 });
